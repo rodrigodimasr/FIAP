@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div id="cliente-content">
+        <div class="space"></div>
+
+        <div class="p-h-32">
+            <form class="list" ng-submit="refresh()">
+                <h1>
+                    Todos os Clientes
+                    <small>{{state.count}} clientes</small>
+                    <span class="pull-right">
+                    </span>
+                </h1>
+
+                <div class="card p-8">
+                    <div class="loading" ng-show="state.carregando">
+                        <i class="material-icons md-32 spin">data_usage</i>
+                    </div>
+                    <div class="loading-no-data" ng-show="state.vazio">
+                        Nenhum cliente encontrado
+                    </div>
+                    <div class="table-responsive" ng-show="!state.carregando && !state.vazio">
+                        <table class="table table-condensed m-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Cliente</th>
+                                    <th>CPF</th>
+                                    <th>Fone</th>
+                                    <th>E-mail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in state.data | orderBy: 'Nome'">
+                                    <td>{{$index + 1}}</td>
+                                    <td>
+                                        <a href="" ui-sref="state-cliente-detail({'id': '{{item.Codigo}}'})">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    {{item.Nome}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span>{{item.CPF}}</span>
+                                    </td>
+                                    <td>
+                                        {{item.Fone}}
+                                    </td>
+                                    <td>
+                                        {{item.Email}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="row">
+            <button type="button" class="btn btn-primary" ui-sref="state-cliente-add"  title="Novo cliente..." >Add</button>
+        </div>
+        @*<a href="" ui-sref="state-cliente-add" ng-click="AddCliente()" class="btn-float footer" title="Novo cliente...">
+            <i class="material-icons">add</i>
+        </a>*@
+    </div>
+
+@*<div class="row">
+        <button type="button" class="btn btn-primary">Primary</button>
+    </div>*@
+@*<a href="" ng-controller="clienteController"ui-sref="state-cliente-add" ng-click="AddCliente()" class="btn-float footer" title="Novo cliente...">
+        <i class="material-icons">add</i>
+    </a>*@
+
+
+

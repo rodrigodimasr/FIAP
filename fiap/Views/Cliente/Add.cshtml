@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<div id="cliente-detail">
+    <div class="space"></div>
+
+    <div class="p-h-32 p-v-16">
+        <form name="clienteForm" class="content" ng-submit="submit()">
+            <h1>Novo Cliente</h1>
+            <div>
+                <div class="card p-8 mark-cliente">
+                    <div class="row">
+                        <div class="col-sm-2 p-t-16 text-center">
+                            <i class="material-icons md-128 text-icon">account_circle</i>
+                        </div>
+                        <div class="col-sm-8 p-t-16">
+                            <div class="row">
+                                <div class="form-group col-sm-8">
+                                    <label class="control-label">Cliente</label>
+                                    <input class="form-control input-lg" ng-model="items.data.Nome" placeholder="Nome do cliente" required maxlength="60" />
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="control-label">CPF</label>
+                                    <input class="form-control input-lg" ng-model="items.data.CPF" ng-class="{'input-error': items.data.CPF}" name="cpfDefault" clean="false" ng-blur="validaCpf(items.data.CPF);" ui-br-cpf-mask />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <div class="input-group" ng-class="{ 'input-error': campoInvalido('email') }">
+                                        <span class="input-group-addon"><i class="material-icons">email</i></span>
+                                        <input class="form-control" name="email" ng-model="items.data.Email" placeholder="e-mail" required maxlength="100" ng-blur="validateEmail(items.data.Email);"/>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="material-icons">phone</i></span>
+                                        <select class="form-control" ng-model="items.data.Tipo" ng-options="i.ID as i.Nome for i in items.auxiliar"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-1" ng-class="{ 'input-error': campoInvalido('telefoneDDD') }">
+                                    <input class="form-control" name="telefoneDDD" ng-model="items.data.DDD" placeholder="DDD" maxlength="3" numbers-only />
+                                </div>
+                                <div class="form-group col-sm-2" ng-class="{ 'input-error': campoInvalido('telefoneNumero') }">
+                                    <input class="form-control" name="telefoneNumero" ng-model="items.data.Fone" placeholder="Número"  maxlength="10" numbers-only />
+                                </div>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-16 bg-cliente text-right">
+                    <input type="submit" class="btn btn-link text-white" value="Salvar" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

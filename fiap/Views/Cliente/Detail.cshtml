@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+}
+
+@*<h2>Detalhes do Cliente</h2>*@
+
+    <div id="cliente-detail">
+        <div class="space"></div>
+        <div class="p-h-32 p-v-16">
+            <form name="clienteForm" class="content" ng-submit="submit()">
+                <h1>Detalhes Cliente</h1>
+                <div>
+                    <div class="card p-8 mark-cliente">
+                        <div class="row">
+                            <div class="col-sm-2 p-t-16 text-center">
+                                <i class="material-icons md-128 text-icon">account_circle</i>
+                            </div>
+                            <div class="col-sm-8 p-t-16">
+                                <div class="row">
+                                    <div class="form-group col-sm-8">
+                                        <label class="control-label">Cliente</label>
+                                        <label class="form-control input-lg" placeholder="Nome do cliente">{{items.data.Nome}}</label>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="control-label">CPF</label>
+                                        <label class="form-control input-lg" name="cpfDefault" clean="false">{{items.data.CPF}}</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="material-icons">email</i></span>
+                                            <label class="form-control" name="email" placeholder="e-mail" maxlength="100">{{items.data.Email}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="material-icons">phone</i></span>
+                                            <label class="form-control" ng-switch="items.data.Tipo">
+                                                <label ng-switch-when="0">Celular</label>
+                                                <label ng-switch-when="1">Comercial</label>
+                                                <label ng-switch-when="2">Residencial</label>
+                                                <label ng-switch-when="3">Recados</label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-1">
+                                        <label class="form-control" name="telefoneDDD" placeholder="DDD" maxlength="3" >{{items.data.DDD}}</label>
+                                    </div>
+                                    <div class="form-group col-sm-2" >
+                                        <label class="form-control" name="telefoneNumero" placeholder="Número" maxlength="10" >{{items.data.Fone}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card p-16 bg-cliente text-right">
+                        <input type="submit" class="btn btn-link text-white" ui-sref="state-cliente-edit({'id': '{{items.data.Codigo}}'})"value="Editar" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
